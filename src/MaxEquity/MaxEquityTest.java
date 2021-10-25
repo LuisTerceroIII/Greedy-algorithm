@@ -23,7 +23,7 @@ public class MaxEquityTest {
 		referees.add(1);
 		// referees.add(2);
 
-		MaxEquity.getMaxEquityCalendar(calendar, teams, referees);
+		MaxEquity.generateMaxEquityCalendar(calendar, teams, referees);
 	}
 
 }

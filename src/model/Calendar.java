@@ -1,10 +1,6 @@
 package model;
 
-import java.io.FileWriter;
 import java.util.ArrayList;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 public class Calendar {
 
@@ -44,18 +40,6 @@ public class Calendar {
 		}
 		return ret;
 
-	}
-
-	public void jsonGenerator(String fileName) {
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		String json = gson.toJson(this);
-		try {
-			FileWriter writter = new FileWriter(fileName);
-			writter.write(json);
-			writter.close();
-		} catch (Exception e) {
-			System.out.println("FALLO CONVERTIR LA CLASEEE");
-		}
 	}
 
 	@SuppressWarnings("unchecked")

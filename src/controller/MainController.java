@@ -37,7 +37,7 @@ public class MainController implements MatchObserver {
 	}
 
 	public void assignReferees() {
-		MaxEquity.getMaxEquityCalendar(_calendar, _teams, _referees);
+		MaxEquity.generateMaxEquityCalendar(_calendar, _teams, _referees);
 	}
 
 	private void attachMatchObservers() {
