@@ -8,9 +8,9 @@ import com.google.gson.Gson;
 import model.Tournament;
 
 public class ReadJsonData {
-	
+
 	public static Tournament readTournament(String filename) {
-		Gson gson =  new Gson();
+		Gson gson = new Gson();
 		Tournament ret = null;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(filename));

@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Tournament {
-	
+
 	private ArrayList<Integer> _referees;
 	private ArrayList<String> _teams;
 	private Calendar _calendar;
@@ -31,8 +31,5 @@ public class Tournament {
 	public String toString() {
 		return "Tournament [_referees=" + _referees + ", _teams=" + _teams + ", _calendar=" + _calendar + "]";
 	}
-	
-	
-	
-	
+
 }

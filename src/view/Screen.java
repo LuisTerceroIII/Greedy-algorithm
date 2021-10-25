@@ -20,8 +20,6 @@ public class Screen {
 	private CalendarView _calendar;
 	private ArrayList<String> _calendarData;
 	private MainController _controller;
-	
-	
 
 	public Screen(ArrayList<String> calendarData, MainController controller) {
 		super();
@@ -29,12 +27,11 @@ public class Screen {
 		_controller = controller;
 		initialize();
 	}
-	
-	
+
 	/**
 	 * Launch the application.
 	 */
-	public  void start() {
+	public void start() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -61,18 +58,17 @@ public class Screen {
 		_frame.setBounds(100, 100, 696, 572);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_frame.getContentPane().setLayout(null);
-		
+
 		_calendar = new CalendarView(_calendarData);
 		_frame.getContentPane().add(_calendar.getScrollPanel());
-		
+
 		JLabel title = new JLabel("Calendario Campeonato");
 		title.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setVerticalAlignment(SwingConstants.BOTTOM);
 		title.setBounds(107, 11, 488, 62);
 		_frame.getContentPane().add(title);
-		
-		
+
 		JButton asignarReferis = new JButton("Asignar Referis");
 		asignarReferis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -83,17 +79,8 @@ public class Screen {
 		_frame.getContentPane().add(asignarReferis);
 	}
 
-
-
-
-
 	public void updateCalendar(ArrayList<String> matches) {
 		_calendar.updateCalendar(matches);
-		
+
 	}
-
-
-
-
-
 }

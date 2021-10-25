@@ -17,14 +17,13 @@ public class MaxEquityTest {
 		teams.add("River");
 		teams.add("Racing");
 		teams.add("Independiente");
-		
-		
+
 		ArrayList<Integer> referees = new ArrayList<Integer>();
 		referees.add(0);
 		referees.add(1);
-		//referees.add(2);
-		
-      	MaxEquity.getMaxEquityCalendar(calendar, teams, referees);
+		// referees.add(2);
+
+		MaxEquity.getMaxEquityCalendar(calendar, teams, referees);
 	}
 
 }
