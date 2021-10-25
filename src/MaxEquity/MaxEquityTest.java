@@ -1,29 +1,37 @@
 package MaxEquity;
 
-import java.util.ArrayList;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import data.ReadJsonData;
 import model.Calendar;
+import model.GameDay;
+import model.Match;
+import model.Tournament;
 
 public class MaxEquityTest {
 
+	//Solver se testea indirectamente
 	@Test
-	public void GenericTest() {
-		Calendar calendar = ReadJsonData.readTournament("calendar.json").getCalendar();
-		ArrayList<String> teams = new ArrayList<>();
-		teams.add("Boca");
-		teams.add("River");
-		teams.add("Racing");
-		teams.add("Independiente");
-
-		ArrayList<Integer> referees = new ArrayList<Integer>();
-		referees.add(0);
-		referees.add(1);
-		// referees.add(2);
-
-		MaxEquity.generateMaxEquityCalendar(calendar, teams, referees);
+	public void AssingRefereesTest() {
+		
+		Tournament tournament = ReadJsonData.readTournament("tournament.json");
+		Calendar calendar = tournament.getCalendar();
+	
+		for(GameDay gameDay : calendar.getMatchesDay()) {
+			for(Match match : gameDay.getMatches()) {
+				assertTrue(match.getReferee() == null);
+			}
+		}
+		
+		Calendar newCalendar = MaxEquity.getMaxEquityCalendar(tournament);
+		
+		for(GameDay gameDay : newCalendar.getMatchesDay()) {
+			for(Match match : gameDay.getMatches()) {
+				assertTrue(match.getReferee() != null);
+			}
+		}
 	}
 
 }

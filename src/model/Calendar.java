@@ -41,6 +41,10 @@ public class Calendar {
 		return ret;
 
 	}
+	
+	public void setMatchesDay(ArrayList<GameDay> _matchesDay) {
+		this._matchesDay = _matchesDay;
+	}
 
 	@SuppressWarnings("unchecked")
 	public ArrayList<GameDay> getMatchesDay() {

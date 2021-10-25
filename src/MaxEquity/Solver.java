@@ -9,30 +9,34 @@ import model.Match;
 public class Solver {
 	private static Instance _problemInstance;
 	private static Calendar _calendar;
-
-	public static void resolve(Instance problemInstance, Calendar calendar) {
-		// La idea es ir recorriendo el calendario,
-		// y asignar un arbitro para cada encuentro maximizando la equidad.
+	
+	public static Calendar resolve(Instance problemInstance, Calendar calendar) {
 		initialize(problemInstance, calendar);
+		
+		Calendar ret = new Calendar();
 
 		ArrayList<GameDay> matchesDays = _calendar.getMatchesDay();
 		int choosedReferee = 0;
 
-		
 		for (GameDay gameDay : matchesDays) {
+			
 			ArrayList<Integer> refereesCopy = refereesCopy();
+			
 			for (Match match : gameDay.getMatches()) {
+				
 				choosedReferee = Solver.chooseReferee(match,refereesCopy);
 				_problemInstance.selectReferee(match, choosedReferee);
 				match.setReferee(choosedReferee);
 				refereesCopy.remove(Integer.valueOf(choosedReferee));
+				
 			}
 		}
-		
-		_problemInstance.print();
+		ret.setMatchesDay(matchesDays);
+		return ret;
 	}
 
-	private static void initialize(Instance problemInstace, Calendar calendar) {
+
+	static void initialize(Instance problemInstace, Calendar calendar) {
 		_problemInstance = problemInstace;
 		_calendar = calendar;	
 	}
@@ -61,7 +65,7 @@ public class Solver {
 	 * Esto significa que el réferi elegido para este encuentro será el réferi “1”,
 	 * ya que ofrece un promedio de equidad mayor hasta ahora.
 	 */
-	private static int chooseReferee(Match match, ArrayList<Integer> referees) {
+	static int chooseReferee(Match match, ArrayList<Integer> referees) {
 
 		int refereeSelected = -1;
 		double lowerAverage = 100;
@@ -84,5 +88,4 @@ public class Solver {
 
 		return refereeSelected;
 	}
-
 }
