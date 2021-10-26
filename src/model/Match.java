@@ -22,13 +22,6 @@ public class Match {
 		this._referee = referee;
 	}
 
-	public String getStringReferee() {
-		if (_referee != null)
-			return _referee.toString();
-		else
-			return " ";
-	}
-
 	public String getTeamA() {
 		return _teamA;
 	}

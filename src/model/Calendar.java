@@ -30,8 +30,11 @@ public class Calendar {
 					.append(gameDay.getDayNumber()).append("\n\n");
 
 			for (Match match : gameDay.getMatches()) {
+				
+				String referee = match.getReferee() != null ? match.getReferee().toString() : " ";
+				
 				stringMatch.append("   Equipos : ").append(match.getTeamA()).append(" vs ").append(match.getTeamB())
-						.append("\n").append("   Arbitro : ").append(match.getStringReferee()).append("\n")
+						.append("\n").append("   Arbitro : ").append(referee).append("\n")
 						.append("\n");
 			}
 
