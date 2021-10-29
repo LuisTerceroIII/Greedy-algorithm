@@ -58,6 +58,7 @@ public class Screen {
 		_frame.setBounds(100, 100, 696, 572);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_frame.getContentPane().setLayout(null);
+		_frame.setResizable(false);
 
 		_calendar = new CalendarView(_calendarData);
 		_frame.getContentPane().add(_calendar.getScrollPanel());

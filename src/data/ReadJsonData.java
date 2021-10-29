@@ -17,9 +17,9 @@ public class ReadJsonData {
 			ret = gson.fromJson(br, Tournament.class);
 		} catch (Exception e) {
 			System.out.println("Error reading file : " + filename);
-			System.out.println(e.getClass());
-			System.out.println(e.getStackTrace());
+			System.out.println(e.getClass());			
 		}
+		
 		return ret;
 	}
 

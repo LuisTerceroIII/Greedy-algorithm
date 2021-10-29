@@ -62,14 +62,22 @@ private Calendar _calendar;
 	}
 	
 	@Test
-	public void selectRefereeTest() {
+	public void chooseRefereeTest() {
 		initialize();
 		Match match = new Match("Manchester United", "Chelsea");
 		Solver.initialize(_instance, _calendar);
 		int selectedReferee = Solver.chooseReferee(match, _instance.getReferees());
-		
-		assertTrue(selectedReferee == 0);
-		
+		assertTrue(selectedReferee == 0);		
+	}
+	
+	@Test
+	public void refereesCopyTest() {
+		initialize();
+		Solver.initialize(_instance, _calendar);
+		ArrayList<Integer> refereeCopy = Solver.refereesCopy();
+		for(Integer copy : refereeCopy) {
+			assertTrue(_instance.getReferees().contains(copy));
+		}
 	}
 
 }

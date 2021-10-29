@@ -28,12 +28,13 @@ public class MainController {
 	}
 
 	public void assignReferees() {
-		Calendar calendar = MaxEquity.getMaxEquityCalendar(_tournament);
+		Calendar calendar = MaxEquity.generateMaxEquityCalendar(_tournament);
 		updateCalendar(calendar);
 	}
 
 	public void updateCalendar(Calendar calendar) {
 		_view.updateCalendar(calendar.matchesInString());
 	}
+	
 
 }

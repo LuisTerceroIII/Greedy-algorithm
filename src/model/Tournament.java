@@ -27,9 +27,5 @@ public class Tournament {
 		return _teams;
 	}
 
-	@Override
-	public String toString() {
-		return "Tournament [_referees=" + _referees + ", _teams=" + _teams + ", _calendar=" + _calendar + "]";
-	}
 
 }

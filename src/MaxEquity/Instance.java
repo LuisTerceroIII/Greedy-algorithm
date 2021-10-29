@@ -14,11 +14,11 @@ class Instance {
 		_referees = referees;
 		generateTeamsAndRefereesMatrix();
 	}
-
-	private void generateTeamsAndRefereesMatrix() {
+	
+	void generateTeamsAndRefereesMatrix() {
 		_teamsAndReferees = new int[_teams.size()][_referees.size()];
 	}
-
+	
 	// Retorna cantidad de veces que el referee recibido a arbitrado para el equipo
 	// recibido.
 	public int getRefereeTimesSelectedForTeam(String team, int referee) {
@@ -48,24 +48,23 @@ class Instance {
 	public ArrayList<Integer> getReferees() {
 		return (ArrayList<Integer>) _referees.clone();
 	}
+	
+	int[][] get_teamsAndReferees() {
+		return _teamsAndReferees;
+	}
+	
+	ArrayList<String> get_teams() {
+		return _teams;
+	}
 
-	private void verifyRefereeNumber(int referee) {
+	void verifyRefereeNumber(int referee) {
 		if (!_referees.contains(referee))
 			throw new IllegalArgumentException("Referi : " + referee + " no existe");
 	}
 
-	private void verifyTeamName(String team) {
+	void verifyTeamName(String team) {
 		if (!_teams.contains(team))
 			throw new IllegalArgumentException("Equipo : " + team + " no existe");
-	}
-
-	public void print() {
-		for (int i = 0; i < _teamsAndReferees.length; i++) {
-			for (int j = 0; j < _teamsAndReferees[i].length; j++) {
-				System.out.print(_teamsAndReferees[i][j] + " ");
-			}
-			System.out.println();
-		}
 	}
 
 }

@@ -30,8 +30,4 @@ public class Match {
 		return _teamB;
 	}
 
-	@Override
-	public String toString() {
-		return "Match [teamA=" + _teamA + ", teamB=" + _teamB + "]";
-	}
 }

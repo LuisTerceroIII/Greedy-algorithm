@@ -2,6 +2,7 @@ package data;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -16,8 +17,8 @@ public class ReadJsonDataTest {
 	private Tournament readTorunamentFile() {
 		return ReadJsonData.readTournament("tournament.json");
 	}
-
-	@Test
+		
+	@Test//Esto verifica que el archivo se leyo correctamente.
 	public void tournamentNotNullTest() {
 		Tournament tournament = readTorunamentFile(); 
 		assertTrue(tournament != null);
@@ -78,6 +79,12 @@ public class ReadJsonDataTest {
 		}
 		assertTrue(matches == 30);
 	}
+	
+	@Test()
+	public void fileNotFoundTest() throws FileNotFoundException {
+		ReadJsonData.readTournament("failTestCase.json");
+	}
+	
 
 }
 	

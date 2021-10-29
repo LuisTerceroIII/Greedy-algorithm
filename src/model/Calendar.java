@@ -26,14 +26,15 @@ public class Calendar {
 		StringBuilder stringMatch = new StringBuilder();
 
 		for (GameDay gameDay : _matchesDay) {
-			stringMatch.append("---------------------------------------------------------------\n").append("   Fecha ")
+			stringMatch.append("*********************************************************\n").append("   Fecha ")
 					.append(gameDay.getDayNumber()).append("\n\n");
 
 			for (Match match : gameDay.getMatches()) {
 				
 				String referee = match.getReferee() != null ? match.getReferee().toString() : " ";
 				
-				stringMatch.append("   Equipos : ").append(match.getTeamA()).append(" vs ").append(match.getTeamB())
+				stringMatch.append("   Equipos : ")
+						.append(match.getTeamA()).append(" vs ").append(match.getTeamB())
 						.append("\n").append("   Arbitro : ").append(referee).append("\n")
 						.append("\n");
 			}
@@ -54,9 +55,5 @@ public class Calendar {
 		return (ArrayList<GameDay>) _matchesDay.clone();
 	}
 
-	@Override
-	public String toString() {
-		return "Calendar [_matchesDay=" + _matchesDay + "]";
-	}
 
 }

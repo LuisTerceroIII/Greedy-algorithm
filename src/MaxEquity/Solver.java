@@ -10,6 +10,7 @@ public class Solver {
 	private static Instance _problemInstance;
 	private static Calendar _calendar;
 	
+	//Se testea indirectamente en MaxEquityTest.
 	public static Calendar resolve(Instance problemInstance, Calendar calendar) {
 		initialize(problemInstance, calendar);
 		
@@ -26,7 +27,7 @@ public class Solver {
 				
 				choosedReferee = Solver.chooseReferee(match,refereesCopy);
 				_problemInstance.selectReferee(match, choosedReferee);
-				match.setReferee(choosedReferee);
+				match.setReferee(choosedReferee + 1); //se suma uno para compesar convertir la lista de referees con index 0.
 				refereesCopy.remove(Integer.valueOf(choosedReferee));
 				
 			}
@@ -34,14 +35,8 @@ public class Solver {
 		ret.setMatchesDay(matchesDays);
 		return ret;
 	}
-
-
-	static void initialize(Instance problemInstace, Calendar calendar) {
-		_problemInstance = problemInstace;
-		_calendar = calendar;	
-	}
 	
-	private static ArrayList<Integer> refereesCopy() {
+	static ArrayList<Integer> refereesCopy() {
 		ArrayList<Integer> ret = new ArrayList<>();
 		for(Integer referee : _problemInstance.getReferees()) {
 			ret.add(referee);
@@ -87,5 +82,10 @@ public class Solver {
 		}
 
 		return refereeSelected;
+	}
+	
+	static void initialize(Instance problemInstace, Calendar calendar) {
+		_problemInstance = problemInstace;
+		_calendar = calendar;	
 	}
 }

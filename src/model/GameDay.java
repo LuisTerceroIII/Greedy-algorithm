@@ -21,9 +21,4 @@ public class GameDay {
 		return _dayNumber;
 	}
 
-	@Override
-	public String toString() {
-		return "GameDay [dayNumber=" + _dayNumber + ", matches=" + _matches + "]";
-	}
-
 }

@@ -10,10 +10,20 @@ public class CalendarView {
 	private JTextArea _calendarData;
 	private JScrollPane _scrollPanel;
 
-	private ArrayList<String> matches;
+	private ArrayList<String> _matches;
 
+	public CalendarView() {
+		this._matches = new ArrayList<>();
+		_calendarData = new JTextArea();
+		_calendarData.setLineWrap(true);
+		_calendarData.setEditable(false);
+
+		writteCalendar();
+		this._scrollPanel = new JScrollPane(_calendarData);
+		this._scrollPanel.setBounds(107, 92, 484, 373);
+	}
 	public CalendarView(ArrayList<String> matches) {
-		this.matches = matches;
+		this._matches = matches;
 		_calendarData = new JTextArea();
 		_calendarData.setLineWrap(true);
 		_calendarData.setEditable(false);
@@ -23,12 +33,12 @@ public class CalendarView {
 		this._scrollPanel.setBounds(107, 92, 484, 373);
 	}
 
-	public JScrollPane getScrollPanel() {
+	JScrollPane getScrollPanel() {
 		return _scrollPanel;
 	}
 
-	private void writteCalendar() {
-		for (String match : matches) {
+	void writteCalendar() {
+		for (String match : _matches) {
 			if (_calendarData.getText() == null) {
 				_calendarData.setText(match);
 			} else {
@@ -38,13 +48,25 @@ public class CalendarView {
 	}
 
 	public void updateCalendar(ArrayList<String> updatedMatches) {
-		matches = updatedMatches;
+		_matches = updatedMatches;
 		cleanCalendar();
 		writteCalendar();
 	}
 
-	private void cleanCalendar() {
+	void cleanCalendar() {
 		_calendarData.setText("");
 	}
+	JTextArea get_calendarData() {
+		return _calendarData;
+	}
+	
+	ArrayList<String> get_matches() {
+		return _matches;
+	}
+	void set_matches(ArrayList<String> _matches) {
+		this._matches = _matches;
+	}
+	
+	
 
 }

@@ -12,6 +12,46 @@ public class InstanceTest {
 	
 	private Instance _instance;
 	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void verifyCorrectRefereeTest() {
+		initialize();
+		_instance.verifyRefereeNumber(2);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void verifyCorrectTeamTest() {
+		initialize();
+		_instance.verifyTeamName("Racing");
+	}
+	
+	@Test
+	public void timesRefereeSelectedForTeamTest() {
+		initialize();
+		assertTrue(_instance.getRefereeTimesSelectedForTeam("Arsenal", 0) == 2);
+		assertTrue(_instance.getRefereeTimesSelectedForTeam("Manchester city", 1) == 1);
+	}
+	
+	@Test
+	public void selectRefereeTest() {
+		initialize();
+		int timesRefereOneForArsenal = _instance.getRefereeTimesSelectedForTeam("Arsenal", 1);
+		int timesRefereOneForChelsea = _instance.getRefereeTimesSelectedForTeam("Chelsea", 1);
+		Match newMatch = new Match("Arsenal","Chelsea");
+		_instance.selectReferee(newMatch, 1);
+		
+		assertTrue(timesRefereOneForArsenal + 1 == _instance.getRefereeTimesSelectedForTeam("Arsenal", 1));
+		assertTrue(timesRefereOneForChelsea + 1 == _instance.getRefereeTimesSelectedForTeam("Chelsea", 1));
+	}
+	
+	@Test
+	public void generateRefereeTeamsMatrixTest() {
+		initialize();
+		assertTrue(_instance.get_teamsAndReferees().length == _instance.get_teams().size());
+		assertTrue(_instance.get_teamsAndReferees()[0].length == _instance.getReferees().size());
+		
+	}
+	
 	private void initialize() {
 		ArrayList<String> teams = new ArrayList<>();
 		ArrayList<Integer> referees = new ArrayList<>();
@@ -38,12 +78,4 @@ public class InstanceTest {
 		_instance.selectReferee(matchD, 1);
 	}
 	
-	@Test
-	public void timesRefereeSelectedForTeamTest() {
-		initialize();
-		assertTrue(_instance.getRefereeTimesSelectedForTeam("Arsenal", 0) == 2);
-		assertTrue(_instance.getRefereeTimesSelectedForTeam("Manchester city", 1) == 1);
-	}
-	
-
 }
