@@ -7,40 +7,42 @@ import model.GameDay;
 import model.Match;
 
 public class Solver {
-	private static Instance _problemInstance;
-	private static Calendar _calendar;
+	private  Instance _problemInstance;
+	private  Calendar _calendar;
 	
-	//Se testea indirectamente en MaxEquityTest.
-	public static Calendar resolve(Instance problemInstance, Calendar calendar) {
-		initialize(problemInstance, calendar);
-		
-		Calendar ret = new Calendar();
+	public Solver(Instance problemInstance, Calendar calendar) {
+		this._problemInstance = problemInstance;
+		this._calendar = calendar;
+	}
+	
 
+	
+	 ArrayList<Integer> refereesCopy() {
+		ArrayList<Integer> ret = new ArrayList<>();
+		for(Integer referee : _problemInstance.getReferees()) {
+			ret.add(referee);
+		}
+		return ret;
+	}
+	//Se testea indirectamente en MaxEquityTest.
+	public  Calendar resolve() {
+		Calendar ret = new Calendar();
 		ArrayList<GameDay> matchesDays = _calendar.getMatchesDay();
 		int choosedReferee = 0;
 
 		for (GameDay gameDay : matchesDays) {
-			
 			ArrayList<Integer> refereesCopy = refereesCopy();
 			
 			for (Match match : gameDay.getMatches()) {
-				
-				choosedReferee = Solver.chooseReferee(match,refereesCopy);
+				choosedReferee = chooseReferee(match,refereesCopy);
 				_problemInstance.selectReferee(match, choosedReferee);
 				match.setReferee(choosedReferee + 1); //se suma uno para compesar convertir la lista de referees con index 0.
 				refereesCopy.remove(Integer.valueOf(choosedReferee));
 				
 			}
 		}
+		
 		ret.setMatchesDay(matchesDays);
-		return ret;
-	}
-	
-	static ArrayList<Integer> refereesCopy() {
-		ArrayList<Integer> ret = new ArrayList<>();
-		for(Integer referee : _problemInstance.getReferees()) {
-			ret.add(referee);
-		}
 		return ret;
 	}
 
@@ -60,7 +62,7 @@ public class Solver {
 	 * Esto significa que el réferi elegido para este encuentro será el réferi “1”,
 	 * ya que ofrece un promedio de equidad mayor hasta ahora.
 	 */
-	static int chooseReferee(Match match, ArrayList<Integer> referees) {
+	 int chooseReferee(Match match, ArrayList<Integer> referees) {
 
 		int refereeSelected = -1;
 		double lowerAverage = 100;
@@ -84,7 +86,7 @@ public class Solver {
 		return refereeSelected;
 	}
 	
-	static void initialize(Instance problemInstace, Calendar calendar) {
+	 void initialize(Instance problemInstace, Calendar calendar) {
 		_problemInstance = problemInstace;
 		_calendar = calendar;	
 	}
