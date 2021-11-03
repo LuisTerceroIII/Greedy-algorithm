@@ -1,25 +1,27 @@
 package controller;
 
+import java.util.ArrayList;
+
 import MaxEquity.MaxEquity;
+import Tools.TransformData;
 import data.ReadJsonData;
 import model.Calendar;
 import model.Tournament;
-import view.Screen;
+import view.View;
 
 public class MainController {
 
-	private Screen _view;
+	private View _view;
 	private Tournament _tournament;
-	private Calendar _calendar;
 
 	public MainController(String tournamentFile) {
 		_tournament = fetchTournamentData(tournamentFile);
-		_calendar = _tournament.getCalendar();
-		_view = new Screen(_calendar.matchesInString(), this);
-
+		Calendar calendar = _tournament.getCalendar();
+		ArrayList<String> calendarInString = TransformData.calendarToString(calendar);
+		_view = new View(calendarInString, this);
 	}
 
-	public Tournament fetchTournamentData(String filename) {
+	private Tournament fetchTournamentData(String filename) {
 		return ReadJsonData.readTournament(filename);
 	}
 
@@ -32,8 +34,8 @@ public class MainController {
 		updateCalendar(calendar);
 	}
 
-	public void updateCalendar(Calendar calendar) {
-		_view.updateCalendar(calendar.matchesInString());
+	private void updateCalendar(Calendar calendar) {
+		_view.updateCalendar(TransformData.calendarToString(calendar));
 	}
 	
 

@@ -9,18 +9,16 @@ import model.Tournament;
 
 public class ReadJsonData {
 
-	public static Tournament readTournament(String filename) {
+	public static Tournament readTournament(String tournamentFile) {
 		Gson gson = new Gson();
 		Tournament ret = null;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(filename));
+			BufferedReader br = new BufferedReader(new FileReader(tournamentFile));
 			ret = gson.fromJson(br, Tournament.class);
 		} catch (Exception e) {
-			System.out.println("Error reading file : " + filename);
+			System.out.println("Error reading file : " + tournamentFile);
 			System.out.println(e.getClass());			
 		}
-		
 		return ret;
 	}
-
 }

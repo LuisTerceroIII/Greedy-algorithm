@@ -69,8 +69,8 @@ public class Solver {
 		
 		for (Integer referee : referees) {
 
-			int timesSelectedForTeamA = _problemInstance.getRefereeTimesSelectedForTeam(match.getTeamA(), referee);
-			int timesSelectedForTeamB = _problemInstance.getRefereeTimesSelectedForTeam(match.getTeamB(), referee);
+			int timesSelectedForTeamA = _problemInstance.getRefereeTimesSelectedForATeam(match.getTeamA(), referee);
+			int timesSelectedForTeamB = _problemInstance.getRefereeTimesSelectedForATeam(match.getTeamB(), referee);
 			double equityAverage = (double) (timesSelectedForTeamA + timesSelectedForTeamB) / 2;
 
 			if (equityAverage < lowerAverage) {

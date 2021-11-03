@@ -12,7 +12,7 @@ public class InstanceTest {
 	
 	private Instance _instance;
 	
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void verifyCorrectRefereeTest() {
 		initialize();
@@ -26,30 +26,29 @@ public class InstanceTest {
 	}
 	
 	@Test
-	public void timesRefereeSelectedForTeamTest() {
+	public void timesRefereeSelectedForATeamTest() {
 		initialize();
-		assertTrue(_instance.getRefereeTimesSelectedForTeam("Arsenal", 0) == 2);
-		assertTrue(_instance.getRefereeTimesSelectedForTeam("Manchester city", 1) == 1);
+		assertTrue(_instance.getRefereeTimesSelectedForATeam("Arsenal", 0) == 2);
+		assertTrue(_instance.getRefereeTimesSelectedForATeam("Manchester city", 1) == 1);
 	}
 	
 	@Test
 	public void selectRefereeTest() {
 		initialize();
-		int timesRefereOneForArsenal = _instance.getRefereeTimesSelectedForTeam("Arsenal", 1);
-		int timesRefereOneForChelsea = _instance.getRefereeTimesSelectedForTeam("Chelsea", 1);
+		int timesRefereeOneForArsenal = _instance.getRefereeTimesSelectedForATeam("Arsenal", 1);
+		int timesRefereeOneForChelsea = _instance.getRefereeTimesSelectedForATeam("Chelsea", 1);
 		Match newMatch = new Match("Arsenal","Chelsea");
 		_instance.selectReferee(newMatch, 1);
 		
-		assertTrue(timesRefereOneForArsenal + 1 == _instance.getRefereeTimesSelectedForTeam("Arsenal", 1));
-		assertTrue(timesRefereOneForChelsea + 1 == _instance.getRefereeTimesSelectedForTeam("Chelsea", 1));
+		assertTrue(timesRefereeOneForArsenal + 1 == _instance.getRefereeTimesSelectedForATeam("Arsenal", 1));
+		assertTrue(timesRefereeOneForChelsea + 1 == _instance.getRefereeTimesSelectedForATeam("Chelsea", 1));
 	}
 	
 	@Test
 	public void generateRefereeTeamsMatrixTest() {
 		initialize();
-		assertTrue(_instance.get_teamsAndReferees().length == _instance.get_teams().size());
-		assertTrue(_instance.get_teamsAndReferees()[0].length == _instance.getReferees().size());
-		
+		assertTrue(_instance.getTeamsAndReferees().length == _instance.getTeams().size());
+		assertTrue(_instance.getTeamsAndReferees()[0].length == _instance.getReferees().size());
 	}
 	
 	private void initialize() {

@@ -17,6 +17,11 @@ public class ReadJsonDataTest {
 	private Tournament readTorunamentFile() {
 		return ReadJsonData.readTournament("tournament.json");
 	}
+	
+	@Test()
+	public void fileNotFoundTest() throws FileNotFoundException {
+		ReadJsonData.readTournament("failTestCase.json");
+	}
 		
 	@Test//Esto verifica que el archivo se leyo correctamente.
 	public void tournamentNotNullTest() {
@@ -45,46 +50,5 @@ public class ReadJsonDataTest {
 		assertTrue(teams != null);
 	}
 	
-	@Test
-	public void tournamentRefereesComplete() {
-		Tournament tournament = readTorunamentFile();
-		ArrayList<Integer> referees = tournament.getReferees();
-		assertTrue(referees.size() == 3);
-	}
-	
-	@Test
-	public void tournamentTeamsComplete() {
-		Tournament tournament = readTorunamentFile();
-		ArrayList<String> teams = tournament.getTeams();
-		assertTrue(teams.size() == 6);
-	}
-	
-	@Test
-	public void tournametMatchDaysComplete() {
-		Tournament tournament = readTorunamentFile();
-		ArrayList<GameDay> gameDays = tournament.getCalendar().getMatchesDay();
-		assertTrue(gameDays.size() == 10);	
-	}
-	
-	@Test
-	public void tournamentMatchesComplete() {
-		int matches = 0;
-		Tournament tournament = readTorunamentFile();
-		ArrayList<GameDay> gameDays = tournament.getCalendar().getMatchesDay();
-		
-		for(GameDay gameDay : gameDays) {
-			for(@SuppressWarnings("unused") Match match : gameDay.getMatches()) {
-				matches++;
-			}
-		}
-		assertTrue(matches == 30);
-	}
-	
-	@Test()
-	public void fileNotFoundTest() throws FileNotFoundException {
-		ReadJsonData.readTournament("failTestCase.json");
-	}
-	
-
 }
 	

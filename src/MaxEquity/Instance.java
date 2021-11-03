@@ -14,14 +14,14 @@ class Instance {
 		_referees = referees;
 		generateTeamsAndRefereesMatrix();
 	}
-	
+
 	void generateTeamsAndRefereesMatrix() {
 		_teamsAndReferees = new int[_teams.size()][_referees.size()];
 	}
 	
 	// Retorna cantidad de veces que el referee recibido a arbitrado para el equipo
 	// recibido.
-	public int getRefereeTimesSelectedForTeam(String team, int referee) {
+	public int getRefereeTimesSelectedForATeam(String team, int referee) {
 		verifyRefereeNumber(referee);
 		verifyTeamName(team);
 		int teamNumber = _teams.indexOf(team);
@@ -29,18 +29,18 @@ class Instance {
 	}
 
 	// Aumenta en 1 la cantidad de veces que un referee arbitrara para el equipo
-	// recibido
-	public void selectReferee(Match match, int referee) {
+	// recibido. ----- Idealmente seria privado.
+	void selectReferee(Match match, int referee) {
 		verifyRefereeNumber(referee);
 		verifyTeamName(match.getTeamA());
 		verifyTeamName(match.getTeamB());
 
 		int teamAMatrixIndex = _teams.indexOf(match.getTeamA());
-		int timesRefereeSelectedForTeamA = getRefereeTimesSelectedForTeam(match.getTeamA(), referee);
+		int timesRefereeSelectedForTeamA = getRefereeTimesSelectedForATeam(match.getTeamA(), referee);
 		_teamsAndReferees[teamAMatrixIndex][referee] = timesRefereeSelectedForTeamA + 1;
 
 		int teamBMatrixIndex = _teams.indexOf(match.getTeamB());
-		int timesRefereeSelectedForTeamB = getRefereeTimesSelectedForTeam(match.getTeamB(), referee);
+		int timesRefereeSelectedForTeamB = getRefereeTimesSelectedForATeam(match.getTeamB(), referee);
 		_teamsAndReferees[teamBMatrixIndex][referee] = timesRefereeSelectedForTeamB + 1;
 	}
 
@@ -49,11 +49,11 @@ class Instance {
 		return (ArrayList<Integer>) _referees.clone();
 	}
 	
-	int[][] get_teamsAndReferees() {
+	int[][] getTeamsAndReferees() {
 		return _teamsAndReferees;
 	}
 	
-	ArrayList<String> get_teams() {
+	ArrayList<String> getTeams() {
 		return _teams;
 	}
 

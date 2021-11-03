@@ -14,14 +14,14 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class Screen {
+public class View {
 
 	private JFrame _frame;
 	private CalendarView _calendar;
 	private ArrayList<String> _calendarData;
 	private MainController _controller;
 
-	public Screen(ArrayList<String> calendarData, MainController controller) {
+	public View(ArrayList<String> calendarData, MainController controller) {
 		super();
 		this._calendarData = calendarData;
 		_controller = controller;
@@ -46,7 +46,7 @@ public class Screen {
 	/**
 	 * Create the application.
 	 */
-	public Screen() {
+	public View() {
 		initialize();
 	}
 
