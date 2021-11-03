@@ -2,43 +2,36 @@ package MaxEquity;
 
 import java.util.ArrayList;
 
+import Tools.Util;
 import model.Calendar;
 import model.GameDay;
 import model.Match;
 
 public class Solver {
-	private  Instance _problemInstance;
-	private  Calendar _calendar;
 	
-	public Solver(Instance problemInstance, Calendar calendar) {
-		this._problemInstance = problemInstance;
-		this._calendar = calendar;
+	private Instance _instance;
+	private TeamsAndReferees _teamsAndReferees;
+	
+	public Solver(Instance problemInstance) {
+		this._instance = problemInstance;
+		_teamsAndReferees = new TeamsAndReferees(_instance.numberOfTeams(), _instance.numberOfReferees());
 	}
-	
-
-	
-	 ArrayList<Integer> refereesCopy() {
-		ArrayList<Integer> ret = new ArrayList<>();
-		for(Integer referee : _problemInstance.getReferees()) {
-			ret.add(referee);
-		}
-		return ret;
-	}
-	//Se testea indirectamente en MaxEquityTest.
+	 
+	//Se testea indirectamente, si MaxEquity.generateMaxEquityCalendar es correcto este metodo funciona.
 	public  Calendar resolve() {
 		Calendar ret = new Calendar();
-		ArrayList<GameDay> matchesDays = _calendar.getMatchesDay();
+		ArrayList<GameDay> matchesDays = _instance.getMatchesDays();
 		int choosedReferee = 0;
+		ArrayList<Integer> refereesToSelect;
 
 		for (GameDay gameDay : matchesDays) {
-			ArrayList<Integer> refereesCopy = refereesCopy();
+			refereesToSelect = _instance.getReferees();
 			
 			for (Match match : gameDay.getMatches()) {
-				choosedReferee = chooseReferee(match,refereesCopy);
-				_problemInstance.selectReferee(match, choosedReferee);
+				choosedReferee = chooseReferee(match,refereesToSelect);
+				addRefereeToMatch(match, choosedReferee);
 				match.setReferee(choosedReferee + 1); //se suma uno para compesar convertir la lista de referees con index 0.
-				refereesCopy.remove(Integer.valueOf(choosedReferee));
-				
+				refereesToSelect.remove(Integer.valueOf(choosedReferee));//Agredo esto para que no se confunda el indice con el "nombre" del arbitro.
 			}
 		}
 		
@@ -69,9 +62,9 @@ public class Solver {
 		
 		for (Integer referee : referees) {
 
-			int timesSelectedForTeamA = _problemInstance.getRefereeTimesSelectedForATeam(match.getTeamA(), referee);
-			int timesSelectedForTeamB = _problemInstance.getRefereeTimesSelectedForATeam(match.getTeamB(), referee);
-			double equityAverage = (double) (timesSelectedForTeamA + timesSelectedForTeamB) / 2;
+			int timesSelectedForTeamA = getRefereeTimesSelectedForATeam(match.getTeamA(), referee);
+			int timesSelectedForTeamB = getRefereeTimesSelectedForATeam(match.getTeamB(), referee);
+			double equityAverage = Util.averageOfTwoNumber(timesSelectedForTeamA, timesSelectedForTeamB);
 
 			if (equityAverage < lowerAverage) {
 				refereeSelected = referee;
@@ -79,15 +72,44 @@ public class Solver {
 			}	
 		}
 		
+		//Es decir solo queda 1 arbitro y su promedio no fue de lo mejor, lo retornamos igual.
 		if(refereeSelected == -1) {
 			return referees.get(0);
 		}
-
 		return refereeSelected;
 	}
 	
-	 void initialize(Instance problemInstace, Calendar calendar) {
-		_problemInstance = problemInstace;
-		_calendar = calendar;	
+	// Aumenta en 1 la cantidad de veces que un referee arbitrara para el equipo
+	// recibido. ----- Idealmente seria privado.
+	void addRefereeToMatch(Match match, int referee) {
+		verifyRefereeNumber(referee);
+		verifyTeamName(match.getTeamA());
+		verifyTeamName(match.getTeamB());
+
+		int teamAMatrixIndex = _instance.getIndexOfTeam(match.getTeamA());
+		_teamsAndReferees.selectReferee(teamAMatrixIndex, referee);
+
+		int teamBMatrixIndex = _instance.getIndexOfTeam(match.getTeamB());
+		_teamsAndReferees.selectReferee(teamBMatrixIndex, referee);
 	}
+	
+	public int getRefereeTimesSelectedForATeam(String team, int referee) {
+		verifyRefereeNumber(referee);
+		verifyTeamName(team);
+		int teamNumber = _instance.getIndexOfTeam(team);
+		return _teamsAndReferees.getRefereeTimesSelectedForATeam(teamNumber, referee);
+	}
+	
+	void verifyRefereeNumber(int referee) {
+		if (!_instance.refereeExist(referee))
+			throw new IllegalArgumentException("Referi : " + referee + " no existe");
+	}
+
+	void verifyTeamName(String team) {
+		if (!_instance.teamExist(team))
+			throw new IllegalArgumentException("Equipo : " + team + " no existe");
+	}
+	
+	 
+
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import model.Match;
@@ -12,7 +13,6 @@ public class InstanceTest {
 	
 	private Instance _instance;
 	
-
 	@Test(expected = IllegalArgumentException.class)
 	public void verifyCorrectRefereeTest() {
 		initialize();
@@ -38,12 +38,12 @@ public class InstanceTest {
 		int timesRefereeOneForArsenal = _instance.getRefereeTimesSelectedForATeam("Arsenal", 1);
 		int timesRefereeOneForChelsea = _instance.getRefereeTimesSelectedForATeam("Chelsea", 1);
 		Match newMatch = new Match("Arsenal","Chelsea");
-		_instance.selectReferee(newMatch, 1);
+		_instance.addRefereeToMatch(newMatch, 1);
 		
 		assertTrue(timesRefereeOneForArsenal + 1 == _instance.getRefereeTimesSelectedForATeam("Arsenal", 1));
 		assertTrue(timesRefereeOneForChelsea + 1 == _instance.getRefereeTimesSelectedForATeam("Chelsea", 1));
 	}
-	
+
 	@Test
 	public void generateRefereeTeamsMatrixTest() {
 		initialize();
@@ -51,6 +51,7 @@ public class InstanceTest {
 		assertTrue(_instance.getTeamsAndReferees()[0].length == _instance.getReferees().size());
 	}
 	
+	@Before
 	private void initialize() {
 		ArrayList<String> teams = new ArrayList<>();
 		ArrayList<Integer> referees = new ArrayList<>();
@@ -67,14 +68,14 @@ public class InstanceTest {
 		
 		Match matchA = new Match("Arsenal", "Manchester city");
 		Match matchB = new Match("Arsenal", "Chelsea");
-		_instance.selectReferee(matchA, 0);
-		_instance.selectReferee(matchB, 0);
+		_instance.addRefereeToMatch(matchA, 0);
+		_instance.addRefereeToMatch(matchB, 0);
 		
 		Match matchC = new Match("Manchester United", "Chelsea");
 		Match matchD = new Match("Manchester United", "Manchester city");
 		
-		_instance.selectReferee(matchC, 1);
-		_instance.selectReferee(matchD, 1);
+		_instance.addRefereeToMatch(matchC, 1);
+		_instance.addRefereeToMatch(matchD, 1);
 	}
 	
 }
