@@ -2,8 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 
-import maxEquity.MaxEquity;
-import tools.TransformData;
+import MaxEquity.MaxEquity;
+import Tools.TransformData;
 import data.ReadJsonData;
 import model.Calendar;
 import model.Tournament;

@@ -1,10 +1,10 @@
-package maxEquity;
+package MaxEquity;
 
 import java.util.ArrayList;
 
+import Tools.Util;
 import model.Calendar;
 import model.Tournament;
-import tools.Util;
 
 public class MaxEquity {
 	//Recordar que recibo una lista de arbitros enumarados del 1 a n, y para trabajar mas comodo los convierto en 0 a n-1.

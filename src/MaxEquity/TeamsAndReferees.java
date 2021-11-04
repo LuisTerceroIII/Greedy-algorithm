@@ -1,4 +1,4 @@
-package maxEquity;
+package MaxEquity;
 
 public class TeamsAndReferees {
 	

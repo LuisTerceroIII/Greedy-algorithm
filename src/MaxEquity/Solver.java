@@ -1,11 +1,11 @@
-package maxEquity;
+package MaxEquity;
 
 import java.util.ArrayList;
 
+import Tools.Util;
 import model.Calendar;
 import model.GameDay;
 import model.Match;
-import tools.Util;
 
 public class Solver {
 	
