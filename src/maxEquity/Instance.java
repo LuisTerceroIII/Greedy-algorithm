@@ -1,4 +1,4 @@
-package MaxEquity;
+package maxEquity;
 
 import java.util.ArrayList;
 

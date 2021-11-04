@@ -1,4 +1,4 @@
-package MaxEquity;
+package maxEquity;
 
 import static org.junit.Assert.*;
 
