@@ -13,7 +13,7 @@ public class TransformData {
 		StringBuilder stringMatch = new StringBuilder();
 
 		for (GameDay gameDay : c.getMatchesDay()) {
-			stringMatch.append("*********************************************************\n").append("   Fecha ")
+			stringMatch.append("*********************************************************************************************\n").append("   Fecha ")
 					.append(gameDay.getDayNumber()).append("\n\n");
 
 			for (Match match : gameDay.getMatches()) {

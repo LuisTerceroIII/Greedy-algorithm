@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import model.Calendar;
-import model.GameDay;
-import model.Match;
 import model.Tournament;
 
 public class ReadJsonDataTest {

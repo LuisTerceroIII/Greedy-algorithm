@@ -14,7 +14,7 @@ public class CalendarView {
 
 	public CalendarView() {
 		this._matches = new ArrayList<>();
-		_calendarData = new JTextArea();
+		_calendarData = new JTextArea(); 
 		_calendarData.setLineWrap(true);
 		_calendarData.setEditable(false);
 

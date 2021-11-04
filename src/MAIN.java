@@ -1,10 +1,10 @@
 
-import controller.MainController;
+import controller.Controller;
 
 public class MAIN {
 
 	public static void main(String[] args) {
-		MainController controller = new MainController("tournament.json");
+		Controller controller = new Controller("tournament.json");
 		controller.launchApp();
 	}
 }

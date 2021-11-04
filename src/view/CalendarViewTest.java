@@ -11,20 +11,6 @@ public class CalendarViewTest {
 	private ArrayList<String> _matches;
 	private CalendarView _calendarView;
 	
-	private void initializeWithoutMatches() {
-		_matches = new ArrayList<>();	
-		_matches.add("River vs Boca");
-		_matches.add("Barcelona vs Real Madrid");
-		_calendarView = new CalendarView();
-	}
-	
-	private void initializeWithMatches() {
-		_matches = new ArrayList<>();	
-		_matches.add("River vs Boca");
-		_matches.add("Barcelona vs Real Madrid");
-		_calendarView = new CalendarView(_matches);
-	}
-
 	@Test
 	public void testWritteCalendar() {
 		initializeWithoutMatches();
@@ -57,4 +43,18 @@ public class CalendarViewTest {
 		assertTrue(_calendarView.get_calendarData().getText().equals(""));	
 	}
 	
+	private void initializeWithoutMatches() {
+		_matches = new ArrayList<>();	
+		_matches.add("River vs Boca");
+		_matches.add("Barcelona vs Real Madrid");
+		_calendarView = new CalendarView();
+	}
+	
+	private void initializeWithMatches() {
+		_matches = new ArrayList<>();	
+		_matches.add("River vs Boca");
+		_matches.add("Barcelona vs Real Madrid");
+		_calendarView = new CalendarView(_matches);
+	}
+	 
 }
