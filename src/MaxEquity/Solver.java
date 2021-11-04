@@ -55,9 +55,10 @@ public class Solver {
 	 * Esto significa que el réferi elegido para este encuentro será el réferi “1”,
 	 * ya que ofrece un promedio de equidad mayor hasta ahora.
 	 */
+	//Si solo queda un referee retorna el referi 0.
 	 int chooseReferee(Match match, ArrayList<Integer> referees) {
 
-		int refereeSelected = -1;
+		int refereeSelected = 0;
 		double lowerAverage = 100;
 		
 		for (Integer referee : referees) {
@@ -70,11 +71,6 @@ public class Solver {
 				refereeSelected = referee;
 				lowerAverage = equityAverage;
 			}	
-		}
-		
-		//Es decir solo queda 1 arbitro y su promedio no fue de lo mejor, lo retornamos igual.
-		if(refereeSelected == -1) {
-			return referees.get(0);
 		}
 		return refereeSelected;
 	}
@@ -110,6 +106,4 @@ public class Solver {
 			throw new IllegalArgumentException("Equipo : " + team + " no existe");
 	}
 	
-	 
-
 }

@@ -8,7 +8,7 @@ import model.Tournament;
 public class MaxEquity {
 	
 	public static Calendar generateMaxEquityCalendar(Tournament tournament) {
-		
+		  
 		ArrayList<String> teams = tournament.getTeams();
 		ArrayList<Integer> referees = zeroIndexReferees(tournament.getReferees());
 		Calendar calendar = tournament.getCalendar();

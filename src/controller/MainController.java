@@ -19,7 +19,7 @@ public class MainController {
 		Calendar calendar = _tournament.getCalendar();
 		ArrayList<String> calendarInString = TransformData.calendarToString(calendar);
 		_view = new View(calendarInString, this);
-	}
+	} 
 
 	private Tournament fetchTournamentData(String filename) {
 		return ReadJsonData.readTournament(filename);

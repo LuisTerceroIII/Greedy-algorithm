@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Tournament {
 
@@ -26,6 +27,25 @@ public class Tournament {
 	public ArrayList<String> getTeams() {
 		return _teams;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(_calendar, _referees, _teams);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tournament other = (Tournament) obj;
+		return Objects.equals(_calendar, other._calendar) && Objects.equals(_referees, other._referees)
+				&& Objects.equals(_teams, other._teams);
+	}
+	
 
 
 }

@@ -58,15 +58,13 @@ private Instance _instance;
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void verifyRefereeNotExistPositive() {
-		@SuppressWarnings("unused")
-		int referee = _solver.getRefereeTimesSelectedForATeam("Arsenal", 4);
+	public void verifyRefereeNotExist() {
+		_solver.verifyRefereeNumber(2);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void verifyTeamExist() {
-		@SuppressWarnings("unused")
-		int team = _solver.getRefereeTimesSelectedForATeam("Arsenal", 4);
+	public void verifyTeamNotExist() {
+		_solver.verifyTeamName("Real Madrid");
 	}
 	
 	@Test
@@ -96,7 +94,6 @@ private Instance _instance;
 		Match match = new Match("Manchester United", "Chelsea");
 		_solver.addRefereeToMatch(match, 0);
 		assertTrue(_solver.getRefereeTimesSelectedForATeam("Chelsea", 0) == 2);
-		
 	}
 	
 	
