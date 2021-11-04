@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-import controller.MainController;
+import controller.Controller;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -19,9 +19,9 @@ public class View {
 	private JFrame _frame;
 	private CalendarView _calendarView;
 	private ArrayList<String> _calendarData;
-	private MainController _controller;
+	private Controller _controller;
 
-	public View(ArrayList<String> calendarData, MainController controller) {
+	public View(ArrayList<String> calendarData, Controller controller) {
 		super();
 		this._calendarData = calendarData;
 		_controller = controller;

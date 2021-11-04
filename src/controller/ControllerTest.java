@@ -8,15 +8,15 @@ import org.junit.Test;
 import data.ReadJsonData;
 import model.Tournament;
 
-public class MainControllerTest {
+public class ControllerTest {
 	
-	private MainController _controller;
+	private Controller _controller;
 	private String jsonFile = "tournament.json";
 	
 	@Before
 	public void init() {
 		
-		_controller = new MainController(jsonFile);
+		_controller = new Controller(jsonFile);
 	}
 	@Test
 	public void testMainController() {

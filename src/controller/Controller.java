@@ -10,12 +10,12 @@ import model.Tournament;
 import view.View;
 /*Metodos : assingReferees y updateCalendar se testean indirectamente,
  *  el primero en el paquete MaxEquity y el segundo en el paquete View*/
-public class MainController {
+public class Controller {
 
 	private View _view;
 	private Tournament _tournament;
 
-	public MainController(String tournamentFile) {
+	public Controller(String tournamentFile) {
 		_tournament = fetchTournamentData(tournamentFile);
 		Calendar calendar = _tournament.getCalendar();
 		ArrayList<String> calendarInString = TransformData.calendarToString(calendar);
