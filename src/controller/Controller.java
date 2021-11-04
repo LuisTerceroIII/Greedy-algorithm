@@ -2,11 +2,11 @@ package controller;
 
 import java.util.ArrayList;
 
+import MaxEquity.MaxEquity;
+import Tools.TransformData;
 import data.ReadJsonData;
-import maxEquity.MaxEquity;
 import model.Calendar;
 import model.Tournament;
-import tools.TransformData;
 import view.View;
 /*Metodos : assingReferees y updateCalendar se testean indirectamente,
  *  el primero en el paquete MaxEquity y el segundo en el paquete View*/
