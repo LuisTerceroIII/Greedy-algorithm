@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 public class View {
 
 	private JFrame _frame;
-	private CalendarView _calendar;
+	private CalendarView _calendarView;
 	private ArrayList<String> _calendarData;
 	private MainController _controller;
 
@@ -25,7 +25,7 @@ public class View {
 		super();
 		this._calendarData = calendarData;
 		_controller = controller;
-		initialize();
+		init();
 	}
 
 	/**
@@ -47,21 +47,21 @@ public class View {
 	 * Create the application.
 	 */
 	public View() {
-		initialize();
+		init();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void init() {
 		_frame = new JFrame();
 		_frame.setBounds(100, 100, 696, 572);
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_frame.getContentPane().setLayout(null);
 		_frame.setResizable(false);
 
-		_calendar = new CalendarView(_calendarData);
-		_frame.getContentPane().add(_calendar.getScrollPanel());
+		_calendarView = new CalendarView(_calendarData);
+		_frame.getContentPane().add(_calendarView.getScrollPanel());
 
 		JLabel title = new JLabel("Calendario Campeonato");
 		title.setFont(new Font("Tahoma", Font.PLAIN, 28));
@@ -81,7 +81,7 @@ public class View {
 	}
 
 	public void updateCalendar(ArrayList<String> matches) {
-		_calendar.updateCalendar(matches);
+		_calendarView.updateCalendar(matches);
 
 	}
 }

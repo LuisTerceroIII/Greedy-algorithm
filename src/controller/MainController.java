@@ -8,7 +8,8 @@ import data.ReadJsonData;
 import model.Calendar;
 import model.Tournament;
 import view.View;
-
+/*Metodos : assingReferees y updateCalendar se testean indirectamente,
+ *  el primero en el paquete MaxEquity y el segundo en el paquete View*/
 public class MainController {
 
 	private View _view;
@@ -21,7 +22,7 @@ public class MainController {
 		_view = new View(calendarInString, this);
 	} 
 
-	private Tournament fetchTournamentData(String filename) {
+	Tournament fetchTournamentData(String filename) {
 		return ReadJsonData.readTournament(filename);
 	}
 
@@ -34,9 +35,19 @@ public class MainController {
 		updateCalendar(calendar);
 	}
 
-	private void updateCalendar(Calendar calendar) {
+	void updateCalendar(Calendar calendar) {
 		_view.updateCalendar(TransformData.calendarToString(calendar));
 	}
+
+	View getView() {
+		return _view;
+	}
+
+	Tournament getTournament() {
+		return _tournament;
+	}
+	
+	
 	
 
 }
