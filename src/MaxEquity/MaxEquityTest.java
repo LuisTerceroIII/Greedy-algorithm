@@ -2,8 +2,6 @@ package MaxEquity;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 import data.ReadJsonData;
@@ -13,7 +11,7 @@ import model.Match;
 import model.Tournament;
 
 public class MaxEquityTest {
-
+ 
 	//Solver se testea indirectamente, se ejecuta cuando se llama a  MaxEquity.generateMaxEquityCalendar(tournament);
 	@Test
 	public void AssingRefereesTest() {
@@ -33,16 +31,6 @@ public class MaxEquityTest {
 			for(Match match : gameDay.getMatches()) {
 				assertTrue(match.getReferee() != null);
 			}
-		}
-	}
-
-	@Test
-	public void convertRefereesZeroIndex() {
-		Tournament tournament = ReadJsonData.readTournament("tournament.json");
-		ArrayList<Integer> referees = tournament.getReferees();
-		ArrayList<Integer> zeroIndexReferee = MaxEquity.zeroIndexReferees(referees);
-		for (int i = 0; i < zeroIndexReferee.size(); i++) {
-			assertTrue(zeroIndexReferee.get(i)+1 == referees.get(i));
 		}
 	}
 }
