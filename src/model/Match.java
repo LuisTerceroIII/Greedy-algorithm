@@ -51,7 +51,4 @@ public class Match {
 		return Objects.equals(_referee, other._referee) && Objects.equals(_teamA, other._teamA)
 				&& Objects.equals(_teamB, other._teamB);
 	}
-	
-	
-
 }

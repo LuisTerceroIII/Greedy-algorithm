@@ -47,7 +47,7 @@ public class InstanceTest {
 	
 	@Test
 	public void getMatchesDaysSameSizeTest() {
-		assertEquals(_instance.getMatchesDays(), _calendar.getMatchesDay());
+		assertEquals(_instance.getMatchesDays(), _calendar.getMatchesDays());
 	}
 	
 	@Test

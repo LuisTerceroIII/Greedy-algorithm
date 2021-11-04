@@ -19,7 +19,7 @@ public class TransformDataTest {
 	public void stringCalendarTest() {
 		Calendar calendar = obtainCalendar();
 		ArrayList<String> calendarString = TransformData.calendarToString(calendar);
-		assertTrue(calendar.getMatchesDay().size() == calendarString.size());
+		assertTrue(calendar.getMatchesDays().size() == calendarString.size());
 	}
 
 }

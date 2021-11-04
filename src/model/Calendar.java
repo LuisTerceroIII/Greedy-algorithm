@@ -28,7 +28,7 @@ public class Calendar {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<GameDay> getMatchesDay() {
+	public ArrayList<GameDay> getMatchesDays() {
 		return (ArrayList<GameDay>) _matchesDays.clone();
 	}
 

@@ -14,12 +14,12 @@ public class MaxEquityTest {
  
 	//Solver se testea indirectamente, se ejecuta cuando se llama a  MaxEquity.generateMaxEquityCalendar(tournament);
 	@Test
-	public void AssingRefereesTest() {
+	public void assingRefereesTest() {
 		
 		Tournament tournament = ReadJsonData.readTournament("tournament.json");
 		Calendar calendar = tournament.getCalendar();
 	
-		for(GameDay gameDay : calendar.getMatchesDay()) {
+		for(GameDay gameDay : calendar.getMatchesDays()) {
 			for(Match match : gameDay.getMatches()) {
 				assertTrue(match.getReferee() == null);
 			}
@@ -27,10 +27,16 @@ public class MaxEquityTest {
 		
 		Calendar newCalendar = MaxEquity.generateMaxEquityCalendar(tournament);
 		
-		for(GameDay gameDay : newCalendar.getMatchesDay()) {
+		for(GameDay gameDay : newCalendar.getMatchesDays()) {
 			for(Match match : gameDay.getMatches()) {
 				assertTrue(match.getReferee() != null);
 			}
 		}
 	}
+	 
+	@Test
+	public void  assingDiferentRefereesEachDayTest() {
+		
+	}
+	
 }

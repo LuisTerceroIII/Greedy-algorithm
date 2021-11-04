@@ -39,7 +39,4 @@ public class GameDay {
 		GameDay other = (GameDay) obj;
 		return _dayNumber == other._dayNumber && Objects.equals(_matches, other._matches);
 	}
-	
-	
-
 }
