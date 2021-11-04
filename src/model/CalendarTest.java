@@ -25,8 +25,8 @@ public class CalendarTest {
 	
 	@Test
 	public void cloneElemTest() {
-		for (GameDay gameDay : _calendar.getMatchesDay()) 
-			for(GameDay gameDayCopy : _cloneCalendar.getMatchesDay()) 
+		for (GameDay gameDay : _calendar.getMatchesDays()) 
+			for(GameDay gameDayCopy : _cloneCalendar.getMatchesDays()) 
 				if(gameDay.equals(gameDayCopy)) 
 					assertArrayEquals(gameDay.getMatches().toArray(),gameDayCopy.getMatches().toArray());
 	}

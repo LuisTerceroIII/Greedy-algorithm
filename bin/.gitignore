@@ -1,8 +1,6 @@
-/MAIN.class
 /MaxEquity/
-/controller/
-/data/
-/model/
-/view/
-/Util/
 /Tools/
+/controller/
+/maxEquity/
+/tools/
+/model/

@@ -1,11 +1,11 @@
-package MaxEquity;
+package maxEquity;
 
 import java.util.ArrayList;
 
-import Tools.Util;
 import model.Calendar;
 import model.GameDay;
 import model.Match;
+import tools.Util;
 
 public class Solver {
 	
@@ -57,12 +57,10 @@ public class Solver {
 	 */
 	//Si solo queda un referee retorna el referi 0.
 	 int chooseReferee(Match match, ArrayList<Integer> referees) {
-
 		int refereeSelected = 0;
 		double lowerAverage = 100;
 		
 		for (Integer referee : referees) {
-
 			int timesSelectedForTeamA = getRefereeTimesSelectedForATeam(match.getTeamA(), referee);
 			int timesSelectedForTeamB = getRefereeTimesSelectedForATeam(match.getTeamB(), referee);
 			double equityAverage = Util.averageOfTwoNumber(timesSelectedForTeamA, timesSelectedForTeamB);

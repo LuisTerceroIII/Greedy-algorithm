@@ -15,7 +15,6 @@ public class ControllerTest {
 	
 	@Before
 	public void init() {
-		
 		_controller = new Controller(jsonFile);
 	}
 	@Test

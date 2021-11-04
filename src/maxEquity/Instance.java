@@ -1,4 +1,4 @@
-package MaxEquity;
+package maxEquity;
 
 import java.util.ArrayList;
 
@@ -33,7 +33,7 @@ class Instance {
 	}
 	
 	public ArrayList<GameDay> getMatchesDays() {
-		return _calendar.getMatchesDay();
+		return _calendar.getMatchesDays();
 	}
 	
 	public int numberOfTeams() {
